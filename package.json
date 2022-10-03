@@ -1,9 +1,15 @@
 {
   "name": "rollup-plugin-esbuild-resolve",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Use rollup with the resolution algorithm implementation of esbuild.",
   "author": "Rene Haas | KingSora",
   "license": "MIT",
+  "homepage": "https://github.com/KingSora/rollup-plugin-esbuild-resolve",
+  "bugs": "https://github.com/KingSora/rollup-plugin-esbuild-resolve/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KingSora/rollup-plugin-esbuild-resolve.git"
+  },
   "keywords": [
     "rollup",
     "plugin",
