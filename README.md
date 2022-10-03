@@ -13,9 +13,9 @@ This plugin replaces [`@rollup/plugin-node-resolve`](https://github.com/rollup/p
 
 ## Why
 
-Esbuild has its own implementation of the [node resolution algorithm](https://nodejs.org/api/modules.html#modules_all_together) and it also implements the [compilerOptions.paths resolution algorithm](https://www.typescriptlang.org/tsconfig#paths) introduced by TypeScript. 
+Esbuild has its own implementation of the [node resolution algorithm](https://nodejs.org/api/modules.html#modules_all_together) and it also implements the [compilerOptions.paths resolution algorithm](https://www.typescriptlang.org/tsconfig#paths) introduced by TypeScript.
 
-The implementation has also one speciality - its not reading just one `tsconfig.json` file, its always reading the closest one from the importer file. This enables correct resolution of many interconnected projects each one with their own `tsconfig.json`.
+The implementation has also one speciality - its not reading just one `tsconfig.json` file, its always reading the closest one from the importer file. This enables correct resolution of many interconnected projects, each one with their own `tsconfig.json`.
 
 ## Install
 
