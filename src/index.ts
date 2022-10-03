@@ -66,7 +66,6 @@ export const esbuildResolve = ({
             this.error(text);
           });
           */
-          return null;
         }
 
         if (warnings && warnings.length > 0) {
