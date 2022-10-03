@@ -8,8 +8,8 @@
 </a>
 <br /><br />
 
-Use rollup with the resolution algorithm implementation of [esbuild](https://github.com/evanw/esbuild).
-This plugin replaces [`@rollup/plugin-node-resolve`](https://github.com/rollup/plugins/tree/master/packages/node-resolve) and all rollup plugins which implement the `compilerOptions.paths` resolution algorithm.
+Use [rollup](https://rollupjs.org/guide/en/) with the resolution algorithm implementation of [esbuild](https://github.com/evanw/esbuild).  
+This plugin replaces [`@rollup/plugin-node-resolve`](https://github.com/rollup/plugins/tree/master/packages/node-resolve) and all rollup plugins which implement the TypeScript `compilerOptions.paths` resolution algorithm.
 
 ## Why
 
