@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-esbuild-resolve",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Use rollup with the resolution algorithm implementation of esbuild.",
   "author": "Rene Haas | KingSora",
   "license": "MIT",
