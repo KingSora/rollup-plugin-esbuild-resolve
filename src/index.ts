@@ -73,8 +73,27 @@ export const esbuildResolve = ({
             this.warn(text);
           });
         }
+        const esbuildResolvedResult = id ? { id, external, moduleSideEffects } : null;
+        if (esbuildResolvedResult) {
+          const rollupResolvedResult = await this.resolve(id, importer, {
+            ...options,
+            skipSelf: true,
+          });
 
-        return id ? { id, external, moduleSideEffects } : null;
+          if (rollupResolvedResult) {
+            // Handle plugins that manually make the result external and the external option
+            if (rollupResolvedResult.external) {
+              return false;
+            }
+            // Allow other plugins to take over resolution
+            if (rollupResolvedResult.id !== id) {
+              return rollupResolvedResult;
+            }
+            return { ...esbuildResolvedResult, meta: rollupResolvedResult.meta };
+          }
+        }
+
+        return esbuildResolvedResult;
       }
       return null;
     },
