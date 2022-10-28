@@ -67,7 +67,7 @@ You can pass any options you like, but the options which are relevant for custom
 | ------------- | ------------- |
 | [`conditions`](https://esbuild.github.io/api/#conditions)  | [`exportConditions`](https://github.com/rollup/plugins/tree/master/packages/node-resolve/#exportconditions)  |
 | [`mainFields`](https://esbuild.github.io/api/#main-fields) | [`mainFields`](https://github.com/rollup/plugins/tree/master/packages/node-resolve/#mainfields) |
-| [`nodePaths`](https://esbuild.github.io/api/#node-paths) | [`moduleDirectories`](https://github.com/rollup/plugins/tree/master/packages/node-resolve/#moduledirectories) |
+| [`nodePaths`](https://esbuild.github.io/api/#node-paths) | [`moduleDirectories`](https://github.com/rollup/plugins/tree/master/packages/node-resolve/#moduledirectories) / [`modulePaths`](https://github.com/rollup/plugins/tree/master/packages/node-resolve/#modulepaths) |
 | [`resolveExtensions`](https://esbuild.github.io/api/#resolve-extensions) | [`extensions`](https://github.com/rollup/plugins/tree/master/packages/node-resolve/#extensions) |
 | [`absWorkingDir`](https://esbuild.github.io/api/#working-directory) | [`rootDir`](https://github.com/rollup/plugins/tree/master/packages/node-resolve/#rootdir) |
 
