@@ -8,7 +8,7 @@ module.exports = async (input, rollupOptions = {}, esbuildResolveOptions = {}) =
       file: 'output.js',
     },
     ...rollupOptions,
-    plugins: [esbuildResolve(esbuildResolveOptions)],
+    plugins: [...(rollupOptions.plugins || []), esbuildResolve(esbuildResolveOptions)],
   };
   const bundle = await rollup(config);
   const generated = await bundle.generate(config.output);

@@ -41,6 +41,8 @@ export default {
 }
 ```
 
+> __Note__: This plugin can be used together with `@rollup/plugin-node-resolve` and other resultion plugins.
+
 ## Options
 
 `rollup-plugin-esbuild-resolve` has only one `optional` option:

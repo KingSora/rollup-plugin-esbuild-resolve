@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-esbuild-resolve",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Use rollup with the resolution algorithm implementation of esbuild.",
   "author": "Rene Haas | KingSora",
   "license": "MIT",
@@ -26,15 +26,17 @@
     "src",
     "dist",
     "types",
+    "CHANGELOG.md",
     "README.md"
   ],
   "main": "dist/index.js",
   "types": "types/index.d.ts",
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.1",
     "@types/node": "^18.7.23",
-    "esbuild": "^0.15.10",
+    "esbuild": "^0.16.0",
     "jest": "^29.1.2",
-    "rollup": "^2.79.1",
+    "rollup": "^3.0.0",
     "typescript": "^4.8.4"
   },
   "peerDependencies": {
