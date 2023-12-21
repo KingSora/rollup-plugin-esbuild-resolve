@@ -1,7 +1,7 @@
 import * as path from 'path';
 import esbuild from 'esbuild';
 import type { Plugin } from 'rollup';
-import type { BuildOptions, BuildResult, PluginBuild } from 'esbuild';
+import type { BuildContext, BuildOptions, PluginBuild } from 'esbuild';
 
 export interface EsbuildResolveOptions {
   esbuild?: BuildOptions;
@@ -11,39 +11,51 @@ export const esbuildResolve = ({
   esbuild: esBuildOptions = {},
 }: EsbuildResolveOptions = {}): Plugin => {
   let esbuildPluginBuild: PluginBuild | null = null;
-  let esbuildResult: BuildResult | null = null;
+  let esbuildContext: BuildContext | null = null;
 
   const createEsbuild = async () => {
-    if (!esbuildResult) {
-      [esbuildResult, esbuildPluginBuild] = await new Promise((resolve) => {
-        let pluginBuildTmp: PluginBuild | undefined;
-        esbuild
-          .build({
-            ...esBuildOptions,
-            watch: true,
-            plugins: [
-              {
-                name: 'resolve-grab',
-                setup(pluginBuild) {
-                  pluginBuild.onStart(() => {
-                    pluginBuildTmp = pluginBuild;
-                  });
+    if (!esbuildContext) {
+      let contextPromise: Promise<BuildContext> | undefined;
+      const pluginBuildPromise = new Promise<PluginBuild>((resolvePluginBuild) => {
+        contextPromise = new Promise<BuildContext>((resolveContext) => {
+          esbuild
+            .context({
+              ...esBuildOptions,
+              plugins: [
+                {
+                  name: 'resolve-grab',
+                  setup(pluginBuild) {
+                    pluginBuild.onStart(() => {
+                      resolvePluginBuild(pluginBuild);
+                    });
+                  },
                 },
-              },
-              ...(esBuildOptions.plugins || []),
-            ],
-          })
-          .then((result) => {
-            resolve([result, pluginBuildTmp!]);
-          });
+                ...(esBuildOptions.plugins || []),
+              ],
+            })
+            .then((context) => {
+              context.watch().then(() => {
+                resolveContext(context);
+              });
+            });
+        });
       });
+
+      if (!contextPromise) {
+        throw new Error('ContextPromise not found.');
+      }
+
+      [esbuildPluginBuild, esbuildContext] = await Promise.all([
+        pluginBuildPromise,
+        contextPromise,
+      ]);
     }
   };
 
   const destroyEsbuild = () => {
-    if (esbuildResult && esbuildResult.stop) {
-      esbuildResult.stop();
-      esbuildResult = null;
+    if (esbuildContext) {
+      esbuildContext.dispose();
+      esbuildContext = null;
       esbuildPluginBuild = null;
     }
   };

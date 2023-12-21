@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.0
+
+Make the plugin work with `esbuild ^0.17.0` and `rollup ^4.0.0`.
+
 ## 1.2.0
 
 Set the order to `post` so this plugin can be used together with `@rollup/plugin-node-resolve` and other resolve plugins.
