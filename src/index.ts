@@ -55,6 +55,7 @@ export const esbuildResolve = ({
   const destroyEsbuild = () => {
     if (esbuildContext) {
       esbuildContext.dispose();
+      esbuild.stop();
       esbuildContext = null;
       esbuildPluginBuild = null;
     }
