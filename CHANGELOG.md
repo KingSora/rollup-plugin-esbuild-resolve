@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.1
+
+Fix node process not ending in some situations. [#2](https://github.com/KingSora/rollup-plugin-esbuild-resolve/pull/2)
+
 ## 1.3.0
 
 Make the plugin work with `esbuild ^0.17.0` and `rollup ^4.0.0`.
